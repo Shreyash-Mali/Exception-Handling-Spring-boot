@@ -1,10 +1,14 @@
 package com.example.service;
 
+import com.example.Exception.DuplicateProductException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Repository.ProductRepository;
 import com.example.entity.Product;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -13,7 +17,18 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public Product createProduct(Product product) {
+		Optional<Product> existingProduct = repository.findByName(product.getName());
+
+		if (existingProduct.isPresent()) {
+			throw new DuplicateProductException("Product with this name"+" "+product.getName()+" "+"already exists.");
+		}
+
 		return repository.save(product);
+	}
+
+	@Override
+	public List<Product> grtAllProduct() {
+		return repository.findAll();
 	}
 
 }
