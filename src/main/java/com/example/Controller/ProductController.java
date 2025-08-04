@@ -23,7 +23,6 @@ public class ProductController {
 	}
 
 	@GetMapping("/all")
-<<<<<<< HEAD
 	public ResponseEntity<List<Product>> getall(){
 		return new ResponseEntity<>(service.grtAllProduct(),HttpStatus.OK);
 	}
@@ -33,11 +32,5 @@ public class ProductController {
 		return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
 	}
 
-=======
-	public ResponseEntity<?> getall(){
-		return new ResponseEntity<>(service.grtAllProduct(),HttpStatus.OK);
-	}
-	
-	
->>>>>>> 7cb1dd13cbd476e70f170a512303a20c6e93e0f0
+
 }
