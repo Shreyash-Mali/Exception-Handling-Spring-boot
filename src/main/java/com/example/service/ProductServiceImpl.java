@@ -1,8 +1,8 @@
 package com.example.service;
 
 import com.example.Exception.DuplicateProductException;
-import com.example.Exception.ProductNotFountException;
 
+import com.example.Exception.ProductNotFountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +33,13 @@ public class ProductServiceImpl implements ProductService{
 		return repository.findAll();
 	}
 
+
 	@Override
 	public Product getById(Long id) {
 		return repository.findById(id)
 				.orElseThrow(() -> new ProductNotFountException("Data Not found with id: " + id));
 	}
+
 
 
 }

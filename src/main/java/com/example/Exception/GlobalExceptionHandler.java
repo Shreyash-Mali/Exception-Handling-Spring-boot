@@ -13,6 +13,7 @@ public class GlobalExceptionHandler {
         ErrorResponse errorResponse=new ErrorResponse(duplicateProductException.getMessage(),webRequest.getDescription(false),"DUPLICATE PRODUCT FOUND");
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
+
     
     @ExceptionHandler(ProductNotFountException.class)
     public ResponseEntity<ErrorResponse> productNotFountException(ProductNotFountException productNotFountException,
